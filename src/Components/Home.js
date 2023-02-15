@@ -3,6 +3,8 @@ import useFetch from "./CustomHooks/useFetch";
 import UploadForestData from "./Applications/UploadForestData";
 import UploadInsightTimerData from "./Applications/UploadInsightTimerData";
 import Insights from "./Insights";
+import MyAttempt from "../Visualizations/MyAttempt";
+import classes from "../Components/Home.module.css";
 
 const Home = () => {
   const [forestData, setForestData] = useState(null);
@@ -48,10 +50,17 @@ const Home = () => {
         ) : fetchingError ? (
           <p>{fetchingError}</p>
         ) : forestData && insightTimerData ? (
-          <Insights
-            forestData={forestData}
-            insightTimerData={insightTimerData}
-          />
+          <div className={classes.container}>
+            <Insights
+              forestData={forestData}
+              insightTimerData={insightTimerData}
+                />
+                 <section className={classes.visHolder}><MyAttempt
+              forestData={forestData}
+              insightTimerData={insightTimerData}
+            /></section>
+            
+          </div>
         ) : (
           <div>
             <h1>Upload Data Files</h1>
