@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from "react";
-import UploadData from "./Upload/UploadData";
 import useFetch from "./CustomHooks/useFetch";
 import UploadForestData from "./Applications/UploadForestData";
 import UploadInsightTimerData from "./Applications/UploadInsightTimerData";
@@ -10,17 +9,20 @@ const Home = () => {
   const [insightTimerData, setInsightTimerData] = useState(null),
     [insightTimerDataUploaded, setInsightTimerDataUploaded] = useState(false);
 
-  const URL =
-    "https://qs-project-166f9-default-rtdb.firebaseio.com/datasets.json";
+  const forestURL =
+    "https://qs-project-166f9-default-rtdb.firebaseio.com/datasets/forest.json";
+    const insightTimerURL =
+    "https://qs-project-166f9-default-rtdb.firebaseio.com/datasets/insightTimer.json";
 
   const renderCount = useRef(1);
   console.log("Number of Home renders: ", renderCount.current++);
 
   const { fetchingError, isLoading, fetchRequest } = useFetch();
 
-  // useEffect(() => {
-  //   fetchRequest({ url: URL }, setData);
-  // }, [fetchRequest]);
+  useEffect(() => {
+    fetchRequest({ url: forestURL }, setForestData);
+    fetchRequest({ url: insightTimerURL }, setInsightTimerData);
+  }, [fetchRequest]);
 
   let content = (
       <>
