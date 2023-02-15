@@ -1,4 +1,4 @@
-import UploadDataForm from "../Upload/UploadDataForm";
+import UploadDataForm from "../UploadDataForm";
 import useDataParsing from "../CustomHooks/useDataParsing";
 import useFetch from "../CustomHooks/useFetch";
 import { useState } from "react";
@@ -29,8 +29,8 @@ const UploadForestData = (props) => {
         header: {
           "Content-Type": "application/json",
         },
-      }, null
-
+      },
+      null
     );
 
     props.setForestData(parsedForestData);

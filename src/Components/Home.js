@@ -4,14 +4,12 @@ import UploadForestData from "./Applications/UploadForestData";
 import UploadInsightTimerData from "./Applications/UploadInsightTimerData";
 
 const Home = () => {
-  const [forestData, setForestData] = useState(null),
-    [forestDataUploaded, setForestDataUploaded] = useState(false);
-  const [insightTimerData, setInsightTimerData] = useState(null),
-    [insightTimerDataUploaded, setInsightTimerDataUploaded] = useState(false);
+  const [forestData, setForestData] = useState(null);
+  const [insightTimerData, setInsightTimerData] = useState(null);
 
   const forestURL =
     "https://qs-project-166f9-default-rtdb.firebaseio.com/datasets/forest.json";
-    const insightTimerURL =
+  const insightTimerURL =
     "https://qs-project-166f9-default-rtdb.firebaseio.com/datasets/insightTimer.json";
 
   const renderCount = useRef(1);
@@ -24,16 +22,37 @@ const Home = () => {
     fetchRequest({ url: insightTimerURL }, setInsightTimerData);
   }, [fetchRequest]);
 
-  let content = (
-      <>
-      <UploadForestData setForestData={setForestData} setForestDataUploaded={setForestDataUploaded}/>
-      <UploadInsightTimerData setInsightTimerData={setInsightTimerData} setInsightTimerDataUploaded={setInsightTimerDataUploaded}/>
-      </>
-    );
+  let uploadArea = (
+    <>
+      {forestData ? (
+        <p>Forest data uploaded!</p>
+      ) : (
+        <UploadForestData setForestData={setForestData} />
+      )}
+      {insightTimerData ? (
+        <p>InsightTimer data uploaded!</p>
+      ) : (
+        <UploadInsightTimerData setInsightTimerData={setInsightTimerData} />
+      )}
+    </>
+  );
 
   // console.log(content);
 
-  return <>{content}</>;
+  return (
+    <>
+      <div>
+        <h1>Upload Data Files</h1>
+        {isLoading ? (
+          <p>Data loading</p>
+        ) : fetchingError ? (
+            <p>{fetchingError}</p>
+        ) : (
+          uploadArea
+        )}
+      </div>
+    </>
+  );
 };
 
 export default Home;

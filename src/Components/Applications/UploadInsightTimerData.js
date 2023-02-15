@@ -1,5 +1,5 @@
 import React from "react";
-import UploadDataForm from "../Upload/UploadDataForm";
+import UploadDataForm from "../UploadDataForm";
 import useDataParsing from "../CustomHooks/useDataParsing";
 import { useState } from "react";
 import useFetch from "../CustomHooks/useFetch";
