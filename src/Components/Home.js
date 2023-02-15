@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import useFetch from "./CustomHooks/useFetch";
 import UploadForestData from "./Applications/UploadForestData";
 import UploadInsightTimerData from "./Applications/UploadInsightTimerData";
+import Insights from "./Insights";
 
 const Home = () => {
   const [forestData, setForestData] = useState(null);
@@ -42,13 +43,20 @@ const Home = () => {
   return (
     <>
       <div>
-        <h1>Upload Data Files</h1>
         {isLoading ? (
           <p>Data loading</p>
         ) : fetchingError ? (
-            <p>{fetchingError}</p>
+          <p>{fetchingError}</p>
+        ) : forestData && insightTimerData ? (
+          <Insights
+            forestData={forestData}
+            insightTimerData={insightTimerData}
+          />
         ) : (
-          uploadArea
+          <div>
+            <h1>Upload Data Files</h1>
+            {uploadArea}
+          </div>
         )}
       </div>
     </>
