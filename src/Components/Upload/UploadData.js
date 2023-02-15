@@ -16,10 +16,14 @@ const UploadData = (props) => {
 
   return (
     <>
-      <UploadForestData setForestDataUploaded={setForestDataUploaded} />
-      <UploadInsightTimerData
-        setInsightTimerDataUploaded={setInsightTimerDataUploaded}
-      />
+      {!(forestDataUploaded && insightTimerDataUploaded) && (
+        <>
+          <UploadForestData setForestDataUploaded={setForestDataUploaded} />
+          <UploadInsightTimerData
+            setInsightTimerDataUploaded={setInsightTimerDataUploaded}
+          />
+        </>
+      )}
     </>
   );
 };
