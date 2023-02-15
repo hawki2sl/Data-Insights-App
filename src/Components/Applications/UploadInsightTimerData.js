@@ -5,7 +5,6 @@ import { useState } from "react";
 import useFetch from "../CustomHooks/useFetch";
 
 const UploadInsightTimerData = (props) => {
-  const [insightTimerData, setInsightTimerData] = useState(null);
   const [parsedInsightTimerData, setParsedInsightTimerData] = useState(null);
 
   const { fetchingError, fetchRequest } = useFetch();
@@ -35,14 +34,10 @@ const UploadInsightTimerData = (props) => {
       null
     );
 
-    setInsightTimerData(parsedInsightTimerData);
+    props.setInsightTimerData(parsedInsightTimerData);
 
     console.log("Insight Timer data added to DB and state.");
   };
-
-  if (insightTimerData) {
-    props.setInsightTimerDataUploaded(true);
-  }
 
   let content;
   if (parseError) {

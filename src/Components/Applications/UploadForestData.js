@@ -4,7 +4,6 @@ import useFetch from "../CustomHooks/useFetch";
 import { useState } from "react";
 
 const UploadForestData = (props) => {
-  const [forestData, setForestData] = useState(null);
   const [parsedForestData, setParsedForestData] = useState(null);
 
   const { fetchingError, fetchRequest } = useFetch();
@@ -34,14 +33,10 @@ const UploadForestData = (props) => {
 
     );
 
-    setForestData(parsedForestData);
+    props.setForestData(parsedForestData);
 
     console.log("Forest data added to DB and state.");
   };
-
-  if (forestData) {
-    props.setForestDataUploaded(true);
-  }
 
   let content;
   if (parseError) {
