@@ -9,7 +9,6 @@ const Insights = (props) => {
 
   return (
     <>
-      <h1>Data Insights</h1>
       <div>
         <h3>Productivity</h3>
         <p>You worked for an average of {avgWorked} hours per day. </p>
