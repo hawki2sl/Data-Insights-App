@@ -54,12 +54,13 @@ const Home = () => {
             <Insights
               forestData={forestData}
               insightTimerData={insightTimerData}
-                />
-                 <section className={classes.visHolder}><MyAttempt
-              forestData={forestData}
-              insightTimerData={insightTimerData}
-            /></section>
-            
+            />
+            <div className={classes.visHolder} id="visHolder">
+              <MyAttempt
+                forestData={forestData}
+                insightTimerData={insightTimerData}
+              />
+            </div>
           </div>
         ) : (
           <div>
