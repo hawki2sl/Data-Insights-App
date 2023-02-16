@@ -1,7 +1,7 @@
 import { findAvgWorked, findAvgMeditated } from "../Helpers/Helpers";
 import { useMemo } from "react";
 
-const Insights = (props) => {
+const AverageInsights = (props) => {
     const { forestData, insightTimerData } = props;
 
     const avgWorked = useMemo(() => findAvgWorked(forestData), [forestData]);
@@ -21,4 +21,4 @@ const Insights = (props) => {
   );
 };
 
-export default Insights;
+export default AverageInsights;

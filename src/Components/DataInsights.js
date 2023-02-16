@@ -6,7 +6,7 @@ import Insights from "./Insights";
 import MyAttempt from "../Visualizations/MyAttempt";
 import classes from "../Components/Home.module.css";
 
-const Home = () => {
+const DataInsights = () => {
   const [forestData, setForestData] = useState(null);
   const [insightTimerData, setInsightTimerData] = useState(null);
 
@@ -73,4 +73,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default DataInsights;

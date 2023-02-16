@@ -1,10 +1,10 @@
-import Home from "../Components/Home"
+import DataInsights from "../Components/DataInsights"
 
 const DataInsightsPage = () => {
   return (
       <>
           <h1>Data Insights Page</h1>
-          <Home />
+          <DataInsights />
       </>
   )
 }
