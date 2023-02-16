@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import useFetch from "./CustomHooks/useFetch";
+import useFetch from "../CustomHooks/useFetch";
 import UploadForestData from "./Applications/UploadForestData";
 import UploadInsightTimerData from "./Applications/UploadInsightTimerData";
 import Insights from "./Insights";

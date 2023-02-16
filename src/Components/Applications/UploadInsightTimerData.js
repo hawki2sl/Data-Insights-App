@@ -1,8 +1,8 @@
 import React from "react";
 import UploadDataForm from "../UploadDataForm";
-import useDataParsing from "../CustomHooks/useDataParsing";
+import useDataParsing from "../../CustomHooks/useDataParsing";
 import { useState } from "react";
-import useFetch from "../CustomHooks/useFetch";
+import useFetch from "../../CustomHooks/useFetch";
 
 const UploadInsightTimerData = (props) => {
   const [parsedInsightTimerData, setParsedInsightTimerData] = useState(null);

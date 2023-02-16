@@ -1,6 +1,6 @@
 import UploadDataForm from "../UploadDataForm";
-import useDataParsing from "../CustomHooks/useDataParsing";
-import useFetch from "../CustomHooks/useFetch";
+import useDataParsing from "../../CustomHooks/useDataParsing";
+import useFetch from "../../CustomHooks/useFetch";
 import { useState } from "react";
 
 const UploadForestData = (props) => {

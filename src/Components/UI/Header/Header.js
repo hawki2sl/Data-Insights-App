@@ -7,6 +7,8 @@ const Header = () => {
       <nav>
         <ul>
           <li>Hello!</li>
+          <li>About</li>
+          <li>Logout</li>
         </ul>
       </nav>
     </header>
