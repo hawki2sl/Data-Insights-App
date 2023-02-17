@@ -1,29 +1,29 @@
 import { useState, useEffect, useRef } from "react";
-import useFetch from "../CustomHooks/useFetch";
 import UploadForestData from "./Applications/UploadForestData";
 import UploadInsightTimerData from "./Applications/UploadInsightTimerData";
 import Insights from "./Insights";
 import MyAttempt from "../Visualizations/MyAttempt";
 import classes from "../Components/Home.module.css";
+import { useLoaderData, json } from "react-router-dom";
 
 const DataInsights = () => {
   const [forestData, setForestData] = useState(null);
   const [insightTimerData, setInsightTimerData] = useState(null);
 
-  const forestURL =
-    "https://qs-project-166f9-default-rtdb.firebaseio.com/datasets/forest.json";
-  const insightTimerURL =
-    "https://qs-project-166f9-default-rtdb.firebaseio.com/datasets/insightTimer.json";
+  const data = useLoaderData();
+  const fetchedForestData = data.forest;
+  const fetchedITData = data.insightTimer;
+
+  useEffect(() => {
+    setForestData(fetchedForestData);
+  }, [fetchedForestData]);
+
+  useEffect(() => {
+    setInsightTimerData(fetchedITData);
+  }, [fetchedITData]);
 
   const renderCount = useRef(1);
   console.log("Number of Home renders: ", renderCount.current++);
-
-  const { fetchingError, isLoading, fetchRequest } = useFetch();
-
-  useEffect(() => {
-    fetchRequest({ url: forestURL }, setForestData);
-    fetchRequest({ url: insightTimerURL }, setInsightTimerData);
-  }, [fetchRequest]);
 
   let uploadArea = (
     <>
@@ -40,37 +40,42 @@ const DataInsights = () => {
     </>
   );
 
-  // console.log(content);
 
   return (
     <>
-      <div>
-        {isLoading ? (
-          <p>Data loading</p>
-        ) : fetchingError ? (
-          <p>{fetchingError}</p>
-        ) : forestData && insightTimerData ? (
-          <div className={classes.container}>
-            <Insights
-              forestData={forestData}
-              insightTimerData={insightTimerData}
+      {forestData && insightTimerData ? (
+        <div className={classes.container}>
+          <Insights
+            forestData={fetchedForestData}
+            insightTimerData={fetchedITData}
+          />
+          <div className={classes.visHolder} id="visHolder">
+            <MyAttempt
+              forestData={fetchedForestData}
+              insightTimerData={fetchedITData}
             />
-            <div className={classes.visHolder} id="visHolder">
-              <MyAttempt
-                forestData={forestData}
-                insightTimerData={insightTimerData}
-              />
-            </div>
           </div>
-        ) : (
-          <div>
-            <h1>Upload Data Files</h1>
-            {uploadArea}
-          </div>
-        )}
-      </div>
+        </div>
+      ) : (
+        <div>
+          <h1>Upload Data Files</h1>
+          {uploadArea}
+        </div>
+      )}
     </>
   );
 };
 
 export default DataInsights;
+
+export const loader = async () => {
+  const response = await fetch(
+    "https://qs-project-166f9-default-rtdb.firebaseio.com/datasets.json"
+  );
+
+  if (!response.ok) {
+    return json({ message: "Something effed up?..." }, { status: 500 });
+  } else {
+    return response;
+  }
+};

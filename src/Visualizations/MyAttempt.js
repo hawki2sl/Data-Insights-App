@@ -21,7 +21,7 @@ const MyAttempt = (props) => {
     // clean up previous SVG element if it exists
     d3.select(".visHolder svg").remove();
 
-    console.log("ello, poppet.");
+    // console.log("ello, poppet.");
 
     // set the dimensions and margins of the graph
     var margin = { top: 10, right: 30, bottom: 30, left: 60 },
@@ -42,7 +42,7 @@ const MyAttempt = (props) => {
     { GrLivArea: insightTimerData.area, SalePrice: insightTimerData.price },
   ];
 
-          console.log("ello, poppet 2.");
+          // console.log("ello, poppet 2.");
           // Add X axis
           var x = d3.scaleLinear()
             .domain([0, 4000])

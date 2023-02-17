@@ -7,6 +7,7 @@ import About from "./Pages/About";
 import Logout from "./Pages/Logout";
 import Blog from "./Pages/Blog";
 import BlogPosts from "./Pages/BlogPosts";
+import { loader as insightsLoader } from "./Components/DataInsights";
 
 function App() {
   //console.log(test);
@@ -19,9 +20,18 @@ function App() {
       children: [
         { index: true, element: <HomePage /> },
         { path: "about", element: <About /> },
-        { path: "dataInsights", element: <DataInsightsPage /> },
-        { path: "blog", element: <Blog /> },
-        { path: "blog/:postID", element: <BlogPosts /> },
+        {
+          path: "dataInsights",
+          element: <DataInsightsPage />,
+          loader: insightsLoader,
+        },
+        {
+          path: "blog",
+          children: [
+            { index: true, element: <Blog /> },
+            { path: ":postID", element: <BlogPosts /> },
+          ],
+        },
         { path: "logout", element: <Logout /> },
       ],
     },
