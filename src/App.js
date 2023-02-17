@@ -5,9 +5,10 @@ import HomePage from "./Pages/HomePage";
 import DataInsightsPage from "./Pages/DataInsightsPage";
 import About from "./Pages/About";
 import Logout from "./Pages/Logout";
+import Blog from "./Pages/Blog";
+import BlogPosts from "./Pages/BlogPosts";
 
 function App() {
-
   //console.log(test);
 
   const router = createBrowserRouter([
@@ -19,7 +20,9 @@ function App() {
         { index: true, element: <HomePage /> },
         { path: "about", element: <About /> },
         { path: "dataInsights", element: <DataInsightsPage /> },
-        { path: "logout", element: <Logout /> }
+        { path: "blog", element: <Blog /> },
+        { path: "blog/:postID", element: <BlogPosts /> },
+        { path: "logout", element: <Logout /> },
       ],
     },
   ]);
