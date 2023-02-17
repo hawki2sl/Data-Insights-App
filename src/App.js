@@ -7,6 +7,9 @@ import About from "./Pages/About";
 import Logout from "./Pages/Logout";
 
 function App() {
+
+  //console.log(test);
+
   const router = createBrowserRouter([
     {
       path: "/",
