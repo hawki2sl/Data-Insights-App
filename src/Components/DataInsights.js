@@ -74,7 +74,7 @@ export const loader = async () => {
   );
 
   if (!response.ok) {
-    return json({ message: "Something effed up?..." }, { status: 500 });
+    return json({ message: "Data fetching error!" }, { status: 500 });
   } else {
     return response;
   }
