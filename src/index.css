@@ -1,0 +1,20 @@
+* {
+  box-sizing: border-box;
+}
+
+/* :root {
+  } */
+
+body {
+  margin: 0;
+}
+
+main {
+    padding: 2rem;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}

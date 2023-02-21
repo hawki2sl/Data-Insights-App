@@ -1,13 +1,14 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import RootLayout from "./Pages/RootLayout";
-import ErrorPage from "./Pages/ErrorPage";
-import HomePage from "./Pages/HomePage";
-import DataInsightsPage from "./Pages/DataInsightsPage";
+import ErrorPage from "./Pages/Error";
+import HomePage from "./Pages/Home";
+import DataInsightsPage from "./Pages/DataInsights";
 import About from "./Pages/About";
 import Logout from "./Pages/Logout";
 import Blog from "./Pages/Blog";
 import BlogPosts from "./Pages/BlogPosts";
 import { loader as insightsLoader } from "./Components/DataInsights";
+import Visualizations from "./Pages/Visualizations";
 
 function App() {
   //console.log(test);
@@ -24,6 +25,10 @@ function App() {
           path: "dataInsights",
           element: <DataInsightsPage />,
           loader: insightsLoader,
+        },
+        {
+          path: "visuals",
+          element: <Visualizations />,
         },
         {
           path: "blog",

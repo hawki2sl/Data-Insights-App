@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef } from "react";
-import UploadForestData from "./Applications/UploadForestData";
-import UploadInsightTimerData from "./Applications/UploadInsightTimerData";
+import UploadForestData from "./UploadForestData";
+import UploadInsightTimerData from "./UploadInsightTimerData";
 import Insights from "./Insights";
 import MyAttempt from "../Visualizations/MyAttempt";
-import classes from "../Components/Home.module.css";
+import classes from "../Components/DataInsights.module.css";
 import { useLoaderData, json } from "react-router-dom";
 
 const DataInsights = () => {
