@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import UploadForestData from "./UploadForestData";
 import UploadInsightTimerData from "./UploadInsightTimerData";
 import Insights from "./Insights";
-import MyAttempt from "../Visualizations/MyAttempt";
+// import MyAttempt from "../Visualizations/MyAttempt";
 import classes from "../Components/DataInsights.module.css";
 import { useLoaderData, json } from "react-router-dom";
 
@@ -49,12 +49,12 @@ const DataInsights = () => {
             forestData={fetchedForestData}
             insightTimerData={fetchedITData}
           />
-          <div className={classes.visHolder} id="visHolder">
+          {/* <div className={classes.visHolder} id="visHolder">
             <MyAttempt
               forestData={fetchedForestData}
               insightTimerData={fetchedITData}
             />
-          </div>
+          </div> */}
         </div>
       ) : (
         <div>
